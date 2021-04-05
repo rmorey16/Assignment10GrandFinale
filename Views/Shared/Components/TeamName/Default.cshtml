@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Team>
+
+<div>
+    @if (ViewBag.TeamName is null)
+    {
+        <a class="btn btn-primary w-100"
+           asp-action="Index"
+           asp-controller="Home"
+           asp-route-teamid="">Home</a>
+        <br />
+    }
+    else
+    {
+        <a class="btn btn-outline-primary w-100"
+           asp-action="Index"
+           asp-controller="Home"
+           asp-route-teamid="">Home</a>
+        <br />
+    }
+
+    @foreach (var x in Model)
+    {
+        if (x.TeamName == ViewBag.TeamName)
+        {
+            <a class="btn btn-primary w-100"
+               asp-action="Index"
+               asp-controller="Home"
+               asp-route-teamid="@x.TeamId"
+               asp-route-teamname="@x.TeamName"
+               asp-route-pagenum=1>@x.TeamName</a><br />
+        }
+        else
+        {
+            <a class="btn btn-outline-primary w-100"
+               asp-action="Index"
+               asp-controller="Home"
+               asp-route-teamid="@x.TeamId"
+               asp-route-teamname="@x.TeamName"
+               asp-route-pagenum=1>@x.TeamName</a><br />
+        }
+    }
+</div>
+
